@@ -85,8 +85,9 @@ class TenorClient {
     ar_range = 'all',
     contentfilter = 'off',
     limit = 20,
+    pos = null,
   } = {}) {
-    const options = { locale, media_filter, ar_range, contentfilter, limit };
+    const options = { locale, media_filter, ar_range, contentfilter, limit, pos };
     const path = this._buildTrendingPath(options);
     return this._fetch(path);
   }
@@ -114,4 +115,5 @@ module.exports = TenorClient;
  * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {number} [limit=20] - The limit of results to be fetched.
+ * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
 */
