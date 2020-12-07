@@ -111,8 +111,12 @@ class TenorClient {
    * Returns completed search terms when given a partial search term.
    * @param {string} query - The partial search term.
    */
-  autocomplete(query) {
-    return this._fetch(`https://api.tenor.com/v1/autocomplete?key=${this.key}&q=${query}`);
+  autocomplete(query, {
+    locale = 'en_US',
+  } = {}) {
+    const options = { q: query, locale };
+    const path = this._buildPath('autocomplete', options);
+    return this._fetch(path);
   }
 }
 
@@ -157,4 +161,10 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
+ */
+
+/**
+ * Tenor Client auto complete options.
+ * @typedef {Object} autocompleteOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
  */
