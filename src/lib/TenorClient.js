@@ -93,6 +93,13 @@ class TenorClient {
     const path = this._buildTrendingPath(options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns a list of GIF categories.
+   */
+  getCategories() {
+    return this._fetch(`https://api.tenor.com/v1/categories?key=${this.key}`);
+  }
 }
 
 module.exports = TenorClient;
