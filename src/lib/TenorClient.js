@@ -106,6 +106,14 @@ class TenorClient {
     const path = this._buildPath('trending_terms', options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns completed search terms when given a partial search term.
+   * @param {string} query - The partial search term.
+   */
+  autocomplete(query) {
+    return this._fetch(`https://api.tenor.com/v1/autocomplete?key=${this.key}&q=${query}`);
+  }
 }
 
 module.exports = TenorClient;
