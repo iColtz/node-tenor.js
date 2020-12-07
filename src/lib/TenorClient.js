@@ -49,8 +49,9 @@ class TenorClient {
     limit = 20,
     contentfilter = 'off',
     locale = 'en_US',
+    media_filter = null,
   } = {}) {
-    const options = { limit, contentfilter, locale };
+    const options = { limit, contentfilter, locale, media_filter };
     const path = this._buildSearchPath(query, options);
     return this._fetch(path);
   }
@@ -64,4 +65,5 @@ module.exports = TenorClient;
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {string} [locale='en_US'] - Language to interpret search string
+ * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
 */
