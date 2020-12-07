@@ -60,6 +60,13 @@ class TenorClient {
     const path = this._buildSearchPath(query, options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns the current trending GIFs.
+   */
+  getTrending() {
+    return this._fetch(`https://api.tenor.com/v1/trending?key=${this.key}`);
+  }
 }
 
 module.exports = TenorClient;
