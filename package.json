@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/iColtz/tenor.js/issues"
   },
-  "homepage": "https://github.com/iColtz/tenor.js#readme"
+  "homepage": "https://github.com/iColtz/tenor.js#readme",
+  "devDependencies": {
+    "eslint": "^7.15.0"
+  }
 }
