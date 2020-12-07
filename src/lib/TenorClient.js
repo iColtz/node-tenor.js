@@ -78,6 +78,7 @@ class TenorClient {
 
   /**
    * Returns the current trending GIFs.
+   * @param {trendingOptions} - Options for the fetch.
    */
   getTrending({
     locale = 'en_US',
@@ -88,7 +89,7 @@ class TenorClient {
     pos = null,
     anon_id = null,
   } = {}) {
-    const options = { locale, media_filter, ar_range, contentfilter, limit, pos };
+    const options = { locale, media_filter, ar_range, contentfilter, limit, pos, anon_id };
     const path = this._buildTrendingPath(options);
     return this._fetch(path);
   }
