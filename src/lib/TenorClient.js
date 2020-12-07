@@ -113,8 +113,9 @@ class TenorClient {
    */
   autocomplete(query, {
     locale = 'en_US',
+    limit = 20,
   } = {}) {
-    const options = { q: query, locale };
+    const options = { q: query, locale, limit };
     const path = this._buildPath('autocomplete', options);
     return this._fetch(path);
   }
@@ -167,4 +168,5 @@ module.exports = TenorClient;
  * Tenor Client auto complete options.
  * @typedef {Object} autocompleteOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
+ * @property {number} [limit=20] - The limit of results to be fetched.
  */
