@@ -58,6 +58,21 @@ class TenorClient {
   }
 
   /**
+   * Builds the trending path.
+   * @param {trendingOptions} - The trending options.
+   */
+  _buildCategoriesPath(options) {
+    let defaultPath = `${API}categories?key=${this.key}`;
+    const params = Object.entries(options);
+    params.forEach((param) => {
+      if (param[1]) {
+        defaultPath += `&${param[0]}=${param[1]}`;
+      }
+    });
+    return defaultPath;
+  }
+
+  /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
    * @param {searchOptions} - Options for the search.
@@ -96,9 +111,14 @@ class TenorClient {
 
   /**
    * Returns a list of GIF categories.
+   * @param {categoriesOptions} - Options for the fetch.
    */
-  getCategories() {
-    return this._fetch(`https://api.tenor.com/v1/categories?key=${this.key}`);
+  getCategories({
+    locale = 'en_US',
+  } = {}) {
+    const options = { locale };
+    const path = this._buildCategoriesPath(options);
+    return this._fetch(path);
   }
 }
 
@@ -126,4 +146,10 @@ module.exports = TenorClient;
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
+*/
+
+/**
+ * Tenor Client categories options.
+ * @typedef {Object} categoriesOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
 */
