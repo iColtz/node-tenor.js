@@ -45,7 +45,12 @@ class TenorClient {
    * @param {string} query - What to search for.
    * @param {searchOptions} - Options for the search.
    */
-  search(query, options) {
+  search(query, {
+    limit = 20,
+    contentfilter = 'off',
+    locale = 'en_US',
+  } = {}) {
+    const options = { limit, contentfilter, locale };
     const path = this._buildSearchPath(query, options);
     return this._fetch(path);
   }
