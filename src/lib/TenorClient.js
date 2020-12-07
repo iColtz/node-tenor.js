@@ -53,8 +53,9 @@ class TenorClient {
     locale = 'en_US',
     media_filter = null,
     ar_range = 'all',
+    pos = null,
   } = {}) {
-    const options = { limit, contentfilter, locale, media_filter, ar_range };
+    const options = { limit, contentfilter, locale, media_filter, ar_range, pos };
     const path = this._buildSearchPath(query, options);
     return this._fetch(path);
   }
@@ -70,4 +71,5 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
+ * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
 */
