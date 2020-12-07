@@ -35,7 +35,9 @@ class TenorClient {
     let defaultPath = `${API}search?key=${this.key}&q=${query}`;
     const params = Object.entries(options);
     params.forEach((param) => {
-      defaultPath += `&${param[0]}=${param[1]}`;
+      if (param[1]) {
+        defaultPath += `&${param[0]}=${param[1]}`;
+      }
     });
     return defaultPath;
   }
