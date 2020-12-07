@@ -92,6 +92,13 @@ class TenorClient {
     const path = this._buildPath(options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns the current trending search terms.
+   */
+  trendingSearchTerms() {
+    return this._fetch(`https://api.tenor.com/v1/trending_terms?key=${this.key}`);
+  }
 }
 
 module.exports = TenorClient;
