@@ -92,6 +92,18 @@ class TenorClient {
     const path = this._buildPath('categories', options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns the current trending search terms.
+   * @param {trendingSearchTermsOptions} - Options for the fetch.
+   */
+  trendingSearchTerms({
+    locale = 'en_US',
+  } = {}) {
+    const options = { locale };
+    const path = this._buildPath('trending_terms', options);
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
@@ -128,3 +140,9 @@ module.exports = TenorClient;
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
 */
+
+/**
+ * Tenor Client trending search terms options.
+ * @typedef {Object} trendingSearchTermsOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
+ */
