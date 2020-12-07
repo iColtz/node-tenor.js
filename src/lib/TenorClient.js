@@ -27,13 +27,27 @@ class TenorClient {
   }
 
   /**
+   * Builds the search path.
+   * @param {string} - The search string.
+   * @param {searchOptions} - The search options.
+   */
+  _buildSearchPath(query, options) {
+    let defaultPath = `${API}search?key=${this.key}&q=${query}`;
+    const params = Object.entries(options);
+    params.forEach((param) => {
+      defaultPath += `&${param[0]}=${param[1]}`;
+    });
+    return defaultPath;
+  }
+
+  /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
    * @param {searchOptions} - Options for the search.
    */
   search(query, options) {
-    const { limit = 20, contentFilter = 'off', locale = 'en_US' } = options;
-    return this._fetch(`${API}search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}&locale=${locale}`);
+    const path = this._buildSearchPath(query, options);
+    return this._fetch(path);
   }
 }
 
@@ -43,6 +57,6 @@ module.exports = TenorClient;
  * Tenor Client search options.
  * @typedef {Object} searchOptions
  * @property {number} [limit=20] - The limit of results to be fetched.
- * @property {string} [contentFilter='off'] - The content safety filter level. (Values: off | low | medium | high)
+ * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {string} [locale='en_US'] - Language to interpret search string
 */
