@@ -30,8 +30,8 @@ class TenorClient {
    * Builds the path.
    * @param {Object} - The path options.
    */
-  _buildPath(options) {
-    let defaultPath = `${API}search?key=${this.key}`;
+  _buildPath(method, options) {
+    let defaultPath = `${API}${method}?key=${this.key}`;
     const params = Object.entries(options);
     params.forEach((param) => {
       if (param[1]) {
@@ -56,7 +56,7 @@ class TenorClient {
     anon_id = null,
   } = {}) {
     const options = { q: query, limit, contentfilter, locale, media_filter, ar_range, pos, anon_id };
-    const path = this._buildPath(options);
+    const path = this._buildPath('search', options);
     return this._fetch(path);
   }
 
@@ -74,7 +74,7 @@ class TenorClient {
     anon_id = null,
   } = {}) {
     const options = { locale, media_filter, ar_range, contentfilter, limit, pos, anon_id };
-    const path = this._buildPath(options);
+    const path = this._buildPath('trending', options);
     return this._fetch(path);
   }
 
@@ -89,15 +89,8 @@ class TenorClient {
     anon_id = null,
   } = {}) {
     const options = { locale, type, contentfilter, anon_id };
-    const path = this._buildPath(options);
+    const path = this._buildPath('categories', options);
     return this._fetch(path);
-  }
-
-  /**
-   * Returns the current trending search terms.
-   */
-  trendingSearchTerms() {
-    return this._fetch(`https://api.tenor.com/v1/trending_terms?key=${this.key}`);
   }
 }
 
