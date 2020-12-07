@@ -83,8 +83,9 @@ class TenorClient {
     locale = 'en_US',
     media_filter = null,
     ar_range = 'all',
+    contentfilter = 'off',
   } = {}) {
-    const options = { locale, media_filter, ar_range };
+    const options = { locale, media_filter, ar_range, contentfilter };
     const path = this._buildTrendingPath(options);
     return this._fetch(path);
   }
@@ -110,4 +111,5 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
+ * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  */
