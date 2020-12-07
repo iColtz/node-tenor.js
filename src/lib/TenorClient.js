@@ -81,8 +81,9 @@ class TenorClient {
    */
   getTrending({
     locale = 'en_US',
+    media_filter = null,
   } = {}) {
-    const options = { locale };
+    const options = { locale, media_filter };
     const path = this._buildTrendingPath(options);
     return this._fetch(path);
   }
@@ -106,4 +107,5 @@ module.exports = TenorClient;
  * Tenor Client trending options.
  * @typedef {Object} trendingOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
+ * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  */
