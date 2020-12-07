@@ -32,8 +32,8 @@ class TenorClient {
    * @param {searchOptions} - Options for the search.
    */
   search(query, options) {
-    const { limit = 20, contentFilter = 'off' } = options;
-    return this._fetch(`${API}search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}`);
+    const { limit = 20, contentFilter = 'off', locale = 'en_US' } = options;
+    return this._fetch(`${API}search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}&locale=${locale}`);
   }
 }
 
@@ -44,4 +44,5 @@ module.exports = TenorClient;
  * @typedef {Object} searchOptions
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [contentFilter='off'] - The content safety filter level. (Values: off | low | medium | high)
- */
+ * @property {string} [locale='en_US'] - Language to interpret search string
+*/
