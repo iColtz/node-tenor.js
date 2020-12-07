@@ -117,8 +117,9 @@ class TenorClient {
     locale = 'en_US',
     type = 'featured',
     contentfilter = 'off',
+    anon_id = null,
   } = {}) {
-    const options = { locale, type, contentfilter };
+    const options = { locale, type, contentfilter, anon_id };
     const path = this._buildCategoriesPath(options);
     return this._fetch(path);
   }
@@ -156,4 +157,5 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [type='featured'] - The type of categories returned. (Values: featured | emoji | trending)
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
+ * @property {string} [anon_id] - The anonymous_id tied to the given user.
 */
