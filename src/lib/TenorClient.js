@@ -27,42 +27,11 @@ class TenorClient {
   }
 
   /**
-   * Builds the search path.
-   * @param {string} - The search string.
-   * @param {searchOptions} - The search options.
+   * Builds the path.
+   * @param {Object} - The path options.
    */
-  _buildSearchPath(query, options) {
-    let defaultPath = `${API}search?key=${this.key}&q=${query}`;
-    const params = Object.entries(options);
-    params.forEach((param) => {
-      if (param[1]) {
-        defaultPath += `&${param[0]}=${param[1]}`;
-      }
-    });
-    return defaultPath;
-  }
-
-  /**
-   * Builds the trending path.
-   * @param {trendingOptions} - The trending options.
-   */
-  _buildTrendingPath(options) {
-    let defaultPath = `${API}trending?key=${this.key}`;
-    const params = Object.entries(options);
-    params.forEach((param) => {
-      if (param[1]) {
-        defaultPath += `&${param[0]}=${param[1]}`;
-      }
-    });
-    return defaultPath;
-  }
-
-  /**
-   * Builds the trending path.
-   * @param {trendingOptions} - The trending options.
-   */
-  _buildCategoriesPath(options) {
-    let defaultPath = `${API}categories?key=${this.key}`;
+  _buildPath(options) {
+    let defaultPath = `${API}search?key=${this.key}`;
     const params = Object.entries(options);
     params.forEach((param) => {
       if (param[1]) {
@@ -86,8 +55,8 @@ class TenorClient {
     pos = null,
     anon_id = null,
   } = {}) {
-    const options = { limit, contentfilter, locale, media_filter, ar_range, pos, anon_id };
-    const path = this._buildSearchPath(query, options);
+    const options = { q: query, limit, contentfilter, locale, media_filter, ar_range, pos, anon_id };
+    const path = this._buildPath(options);
     return this._fetch(path);
   }
 
@@ -105,7 +74,7 @@ class TenorClient {
     anon_id = null,
   } = {}) {
     const options = { locale, media_filter, ar_range, contentfilter, limit, pos, anon_id };
-    const path = this._buildTrendingPath(options);
+    const path = this._buildPath(options);
     return this._fetch(path);
   }
 
@@ -120,7 +89,7 @@ class TenorClient {
     anon_id = null,
   } = {}) {
     const options = { locale, type, contentfilter, anon_id };
-    const path = this._buildCategoriesPath(options);
+    const path = this._buildPath(options);
     return this._fetch(path);
   }
 }
