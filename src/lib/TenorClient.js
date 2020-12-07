@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 
+const API = 'https://api.tenor.com/v1/';
+
 class TenorClient {
   /**
    * Tenor Client.
@@ -31,7 +33,7 @@ class TenorClient {
    * @param {string} [contentFilter='off'] - The content safety filter level. (Values: off | low | medium | high)
    */
   search(query, limit = 20, contentFilter = 'off') {
-    return this._fetch(`https://api.tenor.com/v1/search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}`);
+    return this._fetch(`${API}search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}`);
   }
 }
 
