@@ -69,5 +69,5 @@ module.exports = TenorClient;
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {string} [locale='en_US'] - Language to interpret search string
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
- * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios.
+ * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
 */
