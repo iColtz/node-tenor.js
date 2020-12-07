@@ -99,8 +99,9 @@ class TenorClient {
    */
   trendingSearchTerms({
     locale = 'en_US',
+    limit = 20,
   } = {}) {
-    const options = { locale };
+    const options = { locale, limit };
     const path = this._buildPath('trending_terms', options);
     return this._fetch(path);
   }
@@ -145,4 +146,5 @@ module.exports = TenorClient;
  * Tenor Client trending search terms options.
  * @typedef {Object} trendingSearchTermsOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
+ * @property {number} [limit=20] - The limit of results to be fetched.
  */
