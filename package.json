@@ -23,5 +23,8 @@
   "homepage": "https://github.com/iColtz/tenor.js#readme",
   "devDependencies": {
     "eslint": "^7.15.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
