@@ -116,8 +116,9 @@ class TenorClient {
   getCategories({
     locale = 'en_US',
     type = 'featured',
+    contentfilter = 'off',
   } = {}) {
-    const options = { locale, type };
+    const options = { locale, type, contentfilter };
     const path = this._buildCategoriesPath(options);
     return this._fetch(path);
   }
@@ -154,4 +155,5 @@ module.exports = TenorClient;
  * @typedef {Object} categoriesOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [type='featured'] - The type of categories returned. (Values: featured | emoji | trending)
+ * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
 */
