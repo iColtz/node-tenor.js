@@ -27,9 +27,10 @@ class TenorClient {
   /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
+   * @param {number} [limit=20] - The limit of results to be fetched.
    */
-  search(query) {
-    return this._fetch(`https://api.tenor.com/v1/search?key=${this.key}&q=${query}`);
+  search(query, limit = 20) {
+    return this._fetch(`https://api.tenor.com/v1/search?key=${this.key}&q=${query}&limit=${limit}`);
   }
 }
 
