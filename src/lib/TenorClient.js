@@ -110,6 +110,7 @@ class TenorClient {
   /**
    * Returns completed search terms when given a partial search term.
    * @param {string} query - The partial search term.
+   * @param {autocompleteOptions} - Options for the fetch.
    */
   autocomplete(query, {
     locale = 'en_US',
