@@ -43,6 +43,21 @@ class TenorClient {
   }
 
   /**
+   * Builds the trending path.
+   * @param {trendingOptions} - The trending options.
+   */
+  _buildTrendingPath(options) {
+    let defaultPath = `${API}trending?key=${this.key}`;
+    const params = Object.entries(options);
+    params.forEach((param) => {
+      if (param[1]) {
+        defaultPath += `&${param[0]}=${param[1]}`;
+      }
+    });
+    return defaultPath;
+  }
+
+  /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
    * @param {searchOptions} - Options for the search.
@@ -64,8 +79,12 @@ class TenorClient {
   /**
    * Returns the current trending GIFs.
    */
-  getTrending() {
-    return this._fetch(`https://api.tenor.com/v1/trending?key=${this.key}`);
+  getTrending({
+    locale = 'en_US',
+  } = {}) {
+    const options = { locale };
+    const path = this._buildTrendingPath(options);
+    return this._fetch(path);
   }
 }
 
@@ -76,9 +95,15 @@ module.exports = TenorClient;
  * @typedef {Object} searchOptions
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
- * @property {string} [locale='en_US'] - Language to interpret search string
+ * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
  * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
 */
+
+/**
+ * Tenor Client trending options.
+ * @typedef {Object} trendingOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
+ */
