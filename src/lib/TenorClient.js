@@ -29,12 +29,19 @@ class TenorClient {
   /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
-   * @param {number} [limit=20] - The limit of results to be fetched.
-   * @param {string} [contentFilter='off'] - The content safety filter level. (Values: off | low | medium | high)
+   * @param {searchOptions} - Options for the search.
    */
-  search(query, limit = 20, contentFilter = 'off') {
+  search(query, options) {
+    const { limit = 20, contentFilter = 'off' } = options;
     return this._fetch(`${API}search?key=${this.key}&q=${query}&limit=${limit}&contentfilter=${contentFilter}`);
   }
 }
 
 module.exports = TenorClient;
+
+/**
+ * Tenor Client search options.
+ * @typedef {Object} searchOptions
+ * @property {number} [limit=20] - The limit of results to be fetched.
+ * @property {string} [contentFilter='off'] - The content safety filter level. (Values: off | low | medium | high)
+ */
