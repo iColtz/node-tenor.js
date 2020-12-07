@@ -86,6 +86,7 @@ class TenorClient {
     contentfilter = 'off',
     limit = 20,
     pos = null,
+    anon_id = null,
   } = {}) {
     const options = { locale, media_filter, ar_range, contentfilter, limit, pos };
     const path = this._buildTrendingPath(options);
@@ -116,4 +117,5 @@ module.exports = TenorClient;
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
+ * @property {string} [anon_id] - The anonymous_id tied to the given user.
 */
