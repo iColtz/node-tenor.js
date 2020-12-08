@@ -179,6 +179,16 @@ class TenorClient {
     const path = this._buildPath('registershare', options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns alternative search terms given a search term.
+   * @param {string} query - The search term.
+   */
+  searchSuggestions(query) {
+    const options = { q: query };
+    const path = this._buildPath('search_suggestions', options);
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
