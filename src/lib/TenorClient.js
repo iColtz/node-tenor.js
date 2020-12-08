@@ -125,9 +125,12 @@ class TenorClient {
   /**
    * Returns a random GIF related to the search string.
    * @param {string} query - The search term.
+   * @param {randomGifOptions} - Options for the fetch.
    */
-  randomGif(query) {
-    const options = { q: query };
+  randomGif(query, {
+    locale = 'en_US',
+  } = {}) {
+    const options = { q: query, locale };
     const path = this._buildPath('random', options);
     return this._fetch(path);
   }
@@ -182,4 +185,10 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
+ */
+
+/**
+ * Tenir Cliet random GIF options.
+ * @typedef {Object} randomGifOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
  */
