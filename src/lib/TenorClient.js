@@ -157,9 +157,10 @@ class TenorClient {
   getGifs(ids, {
     media_filter = null,
     limit = 20,
+    pos = null,
   } = {}) {
     const gifIds = Array.isArray(ids) ? ids.join(',') : ids;
-    const options = { ids: gifIds, media_filter, limit };
+    const options = { ids: gifIds, media_filter, limit, pos };
     const path = this._buildPath('gifs', options);
     return this._fetch(path);
   }
@@ -233,4 +234,5 @@ module.exports = TenorClient;
  * @typedef {Object} getGifOptions
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  * @property {number} [limit=20] - The limit of results to be fetched.
+ * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
  */
