@@ -173,8 +173,9 @@ class TenorClient {
   registerShare(id, {
     locale = 'en_US',
     query = null,
+    anon_id = 'a',
   } = {}) {
-    const options = { id, locale, query };
+    const options = { id, locale, query, anon_id };
     const path = this._buildPath('registershare', options);
     return this._fetch(path);
   }
@@ -257,4 +258,5 @@ module.exports = TenorClient;
  * @typedef {Object} registerShareOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [query] - The search string that lead to this share.
+ * @property {string} [anon_id] - The anonymous_id tied to the given user.
  */
