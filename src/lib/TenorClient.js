@@ -170,8 +170,11 @@ class TenorClient {
    * Register a user's sharing of a GIF.
    * @param {string} id - The ID of the GIF.
    */
-  registerShare(id) {
-    const options = { id };
+  registerShare(id, {
+    locale = 'en_US',
+    query = null,
+  } = {}) {
+    const options = { id, locale, query };
     const path = this._buildPath('registershare', options);
     return this._fetch(path);
   }
@@ -247,4 +250,11 @@ module.exports = TenorClient;
  * @property {number} [limit=20] - The limit of results to be fetched.
  * @property {string} [pos] - Get results starting at position "value". Use a non-zero "next" value returned by API results to get the next set of results. pos is not an index and may be an integer, float, or string.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
+ */
+
+/**
+ * Tenor Client register share options.
+ * @typedef {Object} registerShareOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
+ * @property {string} [query] - The search string that lead to this share.
  */
