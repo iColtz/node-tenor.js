@@ -29,7 +29,7 @@ class TenorClient {
   /**
    * Builds the path.
    * @param {string} method - Method for the fetch.
-   * @param {Object} - The path options.
+   * @param {Object} [options] - The path options.
    */
   _buildPath(method, options) {
     let defaultPath = `${API}${method}?key=${this.key}`;
@@ -45,7 +45,7 @@ class TenorClient {
   /**
    * Searchs tenor api for gifs.
    * @param {string} query - What to search for.
-   * @param {searchOptions} - Options for the search.
+   * @param {searchOptions} [options] - Options for the search.
    */
   search(query, {
     limit = 20,
@@ -63,7 +63,7 @@ class TenorClient {
 
   /**
    * Returns the current trending GIFs.
-   * @param {trendingOptions} - Options for the fetch.
+   * @param {trendingOptions} [options] - Options for the fetch.
    */
   getTrending({
     locale = 'en_US',
@@ -81,7 +81,7 @@ class TenorClient {
 
   /**
    * Returns a list of GIF categories.
-   * @param {categoriesOptions} - Options for the fetch.
+   * @param {categoriesOptions} [options] - Options for the fetch.
    */
   getCategories({
     locale = 'en_US',
@@ -96,7 +96,7 @@ class TenorClient {
 
   /**
    * Returns the current trending search terms.
-   * @param {trendingSearchTermsOptions} - Options for the fetch.
+   * @param {trendingSearchTermsOptions} [options] - Options for the fetch.
    */
   trendingSearchTerms({
     locale = 'en_US',
@@ -111,7 +111,7 @@ class TenorClient {
   /**
    * Returns completed search terms when given a partial search term.
    * @param {string} query - The partial search term.
-   * @param {autocompleteOptions} - Options for the fetch.
+   * @param {autocompleteOptions} [options] - Options for the fetch.
    */
   autocomplete(query, {
     locale = 'en_US',
@@ -126,7 +126,7 @@ class TenorClient {
   /**
    * Returns a random GIF related to the search string.
    * @param {string} query - The search term.
-   * @param {randomGifOptions} - Options for the fetch.
+   * @param {randomGifOptions} [options] - Options for the fetch.
    */
   randomGif(query, {
     locale = 'en_US',
@@ -153,7 +153,7 @@ class TenorClient {
   /**
    * Fetches the GIFs with the corresponding ids.
    * @param {Array|string} ids - Ids of GIFs to fetch.
-   * @param {getGifOptions} - Options for the fetch.
+   * @param {getGifOptions} [options] - Options for the fetch.
    */
   getGifs(ids, {
     media_filter = null,
@@ -170,7 +170,7 @@ class TenorClient {
   /**
    * Register a user's sharing of a GIF.
    * @param {string} id - The ID of the GIF.
-   * @param {registerShareOptions} - Options for the fetch.
+   * @param {registerShareOptions} [options] - Options for the fetch.
    */
   registerShare(id, {
     locale = 'en_US',
@@ -185,7 +185,7 @@ class TenorClient {
   /**
    * Returns alternative search terms given a search term.
    * @param {string} query - The search term.
-   * @param {searchSuggestionsOptions} - Options for the fetch.
+   * @param {searchSuggestionsOptions} [options] - Options for the fetch.
    */
   searchSuggestions(query, {
     locale = 'en_US',
