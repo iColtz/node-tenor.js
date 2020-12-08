@@ -183,9 +183,12 @@ class TenorClient {
   /**
    * Returns alternative search terms given a search term.
    * @param {string} query - The search term.
+   * @param {searchSuggestionsOptions} - Options for the fetch.
    */
-  searchSuggestions(query) {
-    const options = { q: query };
+  searchSuggestions(query, {
+    locale = 'en_US',
+  } = {}) {
+    const options = { q: query, locale };
     const path = this._buildPath('search_suggestions', options);
     return this._fetch(path);
   }
@@ -269,4 +272,10 @@ module.exports = TenorClient;
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {string} [query] - The search string that lead to this share.
  * @property {string} [anon_id] - The anonymous_id tied to the given user.
+ */
+
+/**
+ * Tenor Client search suggestions options.
+ * @typedef {Object} searchSuggestionsOptions
+ * @property {string} [locale='en_US'] - Language to interpret search string.
  */
