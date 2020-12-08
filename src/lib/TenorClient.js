@@ -188,8 +188,9 @@ class TenorClient {
   searchSuggestions(query, {
     locale = 'en_US',
     limit = 20,
+    anon_id = null,
   } = {}) {
-    const options = { q: query, locale, limit };
+    const options = { q: query, locale, limit, anon_id };
     const path = this._buildPath('search_suggestions', options);
     return this._fetch(path);
   }
@@ -280,4 +281,5 @@ module.exports = TenorClient;
  * @typedef {Object} searchSuggestionsOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
  * @property {number} [limit=20] - The limit of results to be fetched.
+ * @property {string} [anon_id] - The anonymous_id tied to the given user.
  */
