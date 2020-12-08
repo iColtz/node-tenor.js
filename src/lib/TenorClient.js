@@ -121,6 +121,16 @@ class TenorClient {
     const path = this._buildPath('autocomplete', options);
     return this._fetch(path);
   }
+
+  /**
+   * Returns a random GIF related to the search string.
+   * @param {string} query - The search term.
+   */
+  randomGif(query) {
+    const options = { q: query };
+    const path = this._buildPath('random', options);
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
