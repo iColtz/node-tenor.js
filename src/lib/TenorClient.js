@@ -28,6 +28,7 @@ class TenorClient {
 
   /**
    * Builds the path.
+   * @param {string} method - Method for the fetch.
    * @param {Object} - The path options.
    */
   _buildPath(method, options) {
@@ -169,6 +170,7 @@ class TenorClient {
   /**
    * Register a user's sharing of a GIF.
    * @param {string} id - The ID of the GIF.
+   * @param {registerShareOptions} - Options for the fetch.
    */
   registerShare(id, {
     locale = 'en_US',
