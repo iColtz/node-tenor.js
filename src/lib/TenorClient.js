@@ -140,6 +140,14 @@ class TenorClient {
     const path = this._buildPath('random', options);
     return this._fetch(path);
   }
+
+  /**
+   * Get an anonymous ID for a new user.
+   */
+  getAnonymousID() {
+    const path = this._buildPath('anonid', {});
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
