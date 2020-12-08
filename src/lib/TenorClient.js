@@ -156,9 +156,10 @@ class TenorClient {
    */
   getGifs(ids, {
     media_filter = null,
+    limit = 20,
   } = {}) {
     const gifIds = Array.isArray(ids) ? ids.join(',') : ids;
-    const options = { ids: gifIds, media_filter };
+    const options = { ids: gifIds, media_filter, limit };
     const path = this._buildPath('gifs', options);
     return this._fetch(path);
   }
@@ -231,4 +232,5 @@ module.exports = TenorClient;
  * Tenor Client get GIFs options.
  * @typedef {Object} getGifOptions
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
+ * @property {number} [limit=20] - The limit of results to be fetched.
  */
