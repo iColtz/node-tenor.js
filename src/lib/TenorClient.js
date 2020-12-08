@@ -165,6 +165,16 @@ class TenorClient {
     const path = this._buildPath('gifs', options);
     return this._fetch(path);
   }
+
+  /**
+   * Register a user's sharing of a GIF.
+   * @param {string} id - The ID of the GIF.
+   */
+  registerShare(id) {
+    const options = { id };
+    const path = this._buildPath('registershare', options);
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
