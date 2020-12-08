@@ -148,6 +148,17 @@ class TenorClient {
     const path = this._buildPath('anonid', {});
     return this._fetch(path);
   }
+
+  /**
+   * Fetches the GIFs with the corresponding ids.
+   * @param {Array|string} ids - Ids of GIFs to fetch.
+   */
+  getGifs(ids) {
+    const gifIds = Array.isArray(ids) ? ids.join(',') : ids;
+    const options = { ids: gifIds };
+    const path = this._buildPath('gifs', options);
+    return this._fetch(path);
+  }
 }
 
 module.exports = TenorClient;
