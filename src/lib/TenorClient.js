@@ -129,8 +129,9 @@ class TenorClient {
    */
   randomGif(query, {
     locale = 'en_US',
+    contentfilter = 'off',
   } = {}) {
-    const options = { q: query, locale };
+    const options = { q: query, locale, contentfilter };
     const path = this._buildPath('random', options);
     return this._fetch(path);
   }
@@ -191,4 +192,5 @@ module.exports = TenorClient;
  * Tenir Cliet random GIF options.
  * @typedef {Object} randomGifOptions
  * @property {string} [locale='en_US'] - Language to interpret search string.
+ * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  */
