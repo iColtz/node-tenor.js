@@ -132,8 +132,9 @@ class TenorClient {
     contentfilter = 'off',
     media_filter = null,
     ar_range = 'all',
+    limit = 20,
   } = {}) {
-    const options = { q: query, locale, contentfilter, media_filter, ar_range };
+    const options = { q: query, locale, contentfilter, media_filter, ar_range, limit };
     const path = this._buildPath('random', options);
     return this._fetch(path);
   }
@@ -197,4 +198,5 @@ module.exports = TenorClient;
  * @property {string} [contentfilter='off'] - The content safety filter level. (Values: off | low | medium | high)
  * @property {string} [media_filter] - Reduce the number of GIF formats returned. (Values: basic | minimal)
  * @property {string} [ar_range='all'] - Filter the responce list to only include GIFs within certain aspect ratios. (Values: all | wide | standard)
+ * @property {number} [limit=20] - The limit of results to be fetched.
  */
