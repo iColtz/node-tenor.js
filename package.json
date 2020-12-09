@@ -1,5 +1,5 @@
 {
-  "name": "tenor.js",
+  "name": "node-tenor.js",
   "version": "1.0.0",
   "description": "Simple node.js wrapper for using tenor api.",
   "main": "./src/index.js",
