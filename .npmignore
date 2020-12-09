@@ -9,4 +9,4 @@ test/
 # NPM Ignore
 .eslintrc.js
 .gitattributes
-.gitignore
+.gitignore 
